@@ -223,7 +223,17 @@ console.log( myReplacedString );
         this.genre = genre;
         this.year = year;
     }
-    showPoster() {
+    get name() {   // How we retrieve the property. A GETTER.
+        return this.name;
+    }
+    set name( name ) {   // How we store a new property value. A SETTER.
+        if ( typeof name === 'string') {
+            this.name = name;        
+        } else {
+            this.name = name.toString();
+        }
+    }
+    showPoster() {   // This is a method! We can name them as we like.
         const info = `
             MOVIE INFO
             ==========
