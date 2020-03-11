@@ -255,6 +255,10 @@ console.log( tron );
 console.log( dragonheart );
 console.log( godfather );
 
+/**
+ * Inheritance.
+ */
+
 
 
 
