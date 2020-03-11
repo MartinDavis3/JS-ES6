@@ -1,3 +1,4 @@
+
 var myArray = [ 'Hello, World!', 2, 3, true, 5, null, 38 ];
 
 /**
@@ -133,10 +134,14 @@ console.log( addNums() );
  * Rest parameter.
  */
 
-findHighNum = (  ...args ) => {    // ...args will capture any number of arguments that we pass!
-    console.log( args );           // It can be called by the name we had inbetween our parenthesis
-    return args;
+findHighNums = ( minNum = 0, ...args ) => {    // ...args will capture any number of arguments that we pass!
+    minNum = Number( minNum );
+    if ( minNum === NaN ) minNum = 0;
+    const highNums = args.filter( ( element ) => element > minNum);
+    // console.log( args );           // It can be called by the name we had inbetween our parenthesis
+    return highNums;
 }
+console.log( findHighNums( 5, 2, 20, 50, 3, 0, 10, 24, -508) );
 
 addAllNums = ( ...nums ) => nums.reduce( ( a, v ) => a + v );  // nums becomes an array of length of the number of parameters passsed
 console.log( addAllNums( 64, 6, 10 ) );
@@ -144,7 +149,98 @@ console.log( addAllNums( 64, 6, 10 ) );
 getSecondNum = ( ...nums ) => nums[1];
 console.log( getSecondNum( 64, 6, 10 ) );
 
+/**
+ * Template Literals
+ */
 
+const helloVar = 'Hello, World!';
+const sampleName = 'Sam';
+
+const myNewString = `Hey there, my name is ${sampleName}; I\'d like to give you a big: "${helloVar}"!!`  // note backticks - important!
+console.log( myNewString );
+
+/**
+ * Spread Operator (NB: be careful: same symbol as "rest" ! )
+ */
+
+const newArray = [ 'Hello', ',', ' ', 'World', '!' ]
+console.log( newArray );
+console.log( ...newArray ); //Brought the values in the array together as one string with SPACES inbetween each item (hence spread).
+
+const aBunchOfNums = [ 5, 10, 36, 58 ];
+console.log(addAllNums( aBunchOfNums ) );   // Does not recognise the numbers in the array as seperate parameters ...
+console.log(addAllNums( ...aBunchOfNums ) );  // but this does.
+
+/**
+ * String Methods!
+ * 
+ */
+
+ /**
+  * .search() Method:
+  */
+
+const myTestString = 'Greetings, Programs!'
+console.log( myTestString.search( /tings/i ) );   //returns position of (start) of substring using Regular Expression (Rgex) for searching.
+
+//Example for password:
+//if ( prompt( 'enter your pass' ).search( "^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$" ) )
+
+/**
+ * .replace() Method:
+ */
+
+const myReplacedString = myTestString.replace( /Programs/, 'World' );  // Find a string and replace it.
+console.log( myReplacedString );
+
+/**
+ * Blocks:
+ */
+
+
+ {
+     const myBlockNestedVar = 38;
+ }
+ // console.log( myBlockNestedVar );  // Variable not scoped here
+
+ // We can name blocks if we want
+
+ myOrganizationName: {  // This could be named anything...
+     // We can organize some code in here and control scope of let/const. Program operation just flows straight through.
+     let myBlockNestedVar = 55;   // We used the same name as in our unamed block. That's okay, it was born in a different scoped block!
+     myBlockNestedVar++;
+     console.log( myBlockNestedVar );
+ }
+
+ /**
+  * Classes.
+  * *** CHECK OUR IMPORT
+  */
+
+  class Movie {
+    constructor( name, genre, year ) {
+        this.name = name;
+        this.genre = genre;
+        this.year = year;
+    }
+    showPoster() {
+        const info = `
+            MOVIE INFO
+            ==========
+            Name: ${this.name}
+            Genre: ${this.genre}
+            Year: ${this.year}
+        `;
+        return info;
+    }
+}
+const tron = new Movie( 'Disney\'s TRON', 'Adventure', 1982 );
+const dragonheart = new Movie( 'Dragonheart', 'Fantasy', 1996 );
+const godfather = new Movie( 'Godfather II', 'AAction/Thriller', 1974 );
+
+console.log( tron );
+console.log( dragonheart );
+console.log( godfather );
 
 
 
