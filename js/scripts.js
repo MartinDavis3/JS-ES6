@@ -8,3 +8,31 @@ console.log( isMyStringInside );    // We would get the matching element
 // Find is helpful for checking if an element exists in an array!
 var isMyStringInside = myArray.find( function (element) { return element === 'Goodbye, Everyone :('; });
 console.log( isMyStringInside );    // Not found
+
+/**
+ * .findIndex()
+ */
+
+ var findAnIndex = myArray.findIndex( function (element) { return element === 2; } );
+ console.log( findAnIndex );    // Bur this time, it returned the value's INDEX.
+
+ /**
+  * .entries()
+  */
+
+var pairing = myArray.entries();
+console.log( pairing ); // Returns an iterator.
+console.log( pairing.next().value ); // We can keep bumping to the next item, getting a nice key/value array to let us know what's inside!
+console.log( pairing.next().value );
+console.log( pairing.next().value );
+console.log( pairing.next().value );
+console.log( pairing.next().value );
+console.log( pairing.next().value );
+console.log( pairing.next().value );
+
+/**
+ * .from() method:
+ */
+
+ var fromArray = myArray.from();
+
