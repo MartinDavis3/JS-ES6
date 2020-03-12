@@ -242,19 +242,79 @@ const billAndTedsExcellentAdventure = new BuyableMovie( 'Bill and Ted\'s Excelle
 billAndTedsExcellentAdventure.setPrice = '16.37';
 console.log( billAndTedsExcellentAdventure );
 
+// Using a regular (non-static) method.
+billAndTedsExcellentAdventure.showPoster();
+console.log( billAndTedsExcellentAdventure.showPoster() );
+
+//
+console.log( Calculator.add( 3, 3, 3, 3, 3, 5 ));   //20
+console.log( Calculator.subtract( 16, 5 )); //11
 
 /**
- * Inheritance.
+ * SETS
  */
 
+let mySet = new Set();
+
+mySet.add( 5 );  // Set values must be unique
+mySet.add( 5 ); // No error, but does not add a new member
+mySet.add( 2 );
+
+console.log( mySet );
+
+console.log( mySet.size ); // Size is 2 (i.e. 2 members)
+
+console.log( mySet.has( 5 ) );  // Returns true
+
+console.log( mySet.has( 36 ) );  // Returns false
+
+let mySetIterator = mySet.entries();
+
+console.log( mySetIterator.next().value );  // Show value 1....
+console.log( mySetIterator.next().value );  // Now value 2....
+// Since Sets contain only unique values, there is no need for a proper 
+// "key", as the value is already unique.
+
+mySet.delete( 5 );
+console.log( mySet )
+
+/**
+ * Maps
+ * KEY VALUE PAIR data-type
+ */const myValues = {  //Old workaround was objects
+     name: 'Billy',
+     age: 95
+ }
 
 
+console.log( myValues );  // Object, gross, not what it was intended for
 
+const myMap = new Map( [
+    ['name', 'Billy'],
+    ['age', 95],
+    ['greeting', 'Yo']
+    [7, 'We can even use numbers as keys, unlike for objects.']
+] );
 
+console.log( myMap.size );
+console.log( myMap.has( 'age' ) ); // Check for a key
+console.log( myMap.get( 'age' ) ); // Retrieve value
+const myMapIterator = myMap.keys(); // Gets an iterator
+console.log( myMapIterator.next().value ); // First item's key
+console.log( myMapIterator.next().value ); // Second item's key
+console.log( myMapIterator.next().value ); // Third item's key
 
+myMap.set( 'country', 'Canada' );  // Add a new key-value pair.
 
+const myMapValueIterator = myMap.values(); //Gets an iterator
+console.log( myMapValueIterator.next().value ); //First item's value
+console.log( myMapValueIterator.next().value );
+console.log( myMapValueIterator.next().value );
+console.log( myMapValueIterator.next().value );
 
+myMap.clear();
 
+console.log( myMap.size );  // Zero now :(
 
 
 
